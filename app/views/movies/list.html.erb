@@ -4,3 +4,4 @@
     <li><%= movie.name %></li>
   <% end %>
 </ul>
+<center><%= paginate @movies, :window => 3 %></center>
