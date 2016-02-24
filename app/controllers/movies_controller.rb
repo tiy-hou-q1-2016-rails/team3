@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   def list
     @movies = fetch_movies
+    @movies = Kaminari.paginate_array(@movies).page(params[:page]).per(15)
   end
 
   def view
