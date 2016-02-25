@@ -1,7 +1,6 @@
 class MoviesController < ApplicationController
   def list
     @movies = fetch_movies
-    @movies = fetch_movies
     if params[:name].present? && params[:rating].present?
       @movies = @movies.select do |movie|
         (movie.name.downcase.include? params[:name].downcase) &&
