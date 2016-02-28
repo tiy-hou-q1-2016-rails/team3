@@ -1,7 +1,6 @@
 class MoviesController < ApplicationController
   def list
     @movies = fetch_movies
-    @movies = Kaminari.paginate_array(@movies).page(params[:page]).per(15)
     if params[:name].present? && params[:rating].present?
       @movies = @movies.select do |movie|
         (movie.name.downcase.include? params[:name].downcase) &&
@@ -14,6 +13,8 @@ class MoviesController < ApplicationController
     if params[:rating].present?
       @movies = @movies.select{|movie| movie.stars.to_s.include? params[:rating].to_s}
     end
+    @movies = Kaminari.paginate_array(@movies).page(params[:page]).per(15)
+
   end
 
   def view
